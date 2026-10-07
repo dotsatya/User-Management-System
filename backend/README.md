@@ -1,26 +1,30 @@
 # Backend - User Management System
 
-This folder contains the backend API for the project. It is built with Express.js and Sequelize, and it powers the frontend by handling user registration, login, authentication, user retrieval, and admin management operations.
+This folder contains the API server for the project. It is the shared backend for both the user-facing frontend and the admin frontend.
 
-## Project concept
+## Repository structure
 
-This repository is split into two main folders:
+```text
+User Management System/
+├── backend/          # Express API, Sequelize models, auth logic, and routes
+├── frontend-admin/   # Admin dashboard and login interface
+├── frontend-users/   # User registration, login, and profile interface
+├── README.md         # Project overview
+├── .gitignore
+└── .env
+```
 
-- `backend/` - API server, database model, authentication logic, and user management endpoints
-- `frontend/` - Next.js web interface that consumes the API
+## What this backend does
 
-The backend is the core service layer of the application. It receives requests from the frontend, validates data, manages database operations, and issues JWT-based authentication.
+The backend handles:
 
-## Included functionality
-
-- User registration with password hashing
-- User login with JWT token generation
-- Logout by clearing the auth cookie
-- Fetch current logged-in user details
-- Fetch all users for admin access
-- Get, update, and delete user records by ID
-- MySQL database integration using Sequelize
-- CORS and cookie support for frontend communication
+- User registration and login
+- JWT-based authentication
+- Cookie-based session handling
+- Fetching authenticated user data
+- Admin access to all users
+- Updating and deleting user records
+- MySQL database communication through Sequelize
 
 ## Folder structure
 
@@ -41,6 +45,7 @@ backend/
 ├── .env
 ├── index.js
 ├── package.json
+├── package-lock.json
 ├── README.md
 └── node_modules/
 ```
@@ -51,15 +56,15 @@ backend/
 - Express.js
 - MySQL
 - Sequelize ORM
-- JWT for authentication
-- bcryptjs for password hashing
+- JWT
+- bcryptjs
 - cookie-parser
 - CORS
 - dotenv
 
 ## Environment variables
 
-Create a `.env` file in this folder with values like:
+Create a `.env` file inside `backend/` with values similar to:
 
 ```bash
 PORT=5000
@@ -86,7 +91,7 @@ Then start the server:
 npm start
 ```
 
-The backend will run on:
+The backend runs on:
 
 ```text
 http://localhost:5000
@@ -96,17 +101,17 @@ http://localhost:5000
 
 ### Authentication
 
-- `POST /api/auth/register` - register a new user
-- `POST /api/auth/login` - log in a user and create a cookie token
-- `POST /api/auth/logout` - clear the auth cookie
-- `GET /api/auth/userdata` - get the current authenticated user
+- `POST /api/auth/register` - Register a new account
+- `POST /api/auth/login` - Log in and generate a cookie-based JWT session
+- `POST /api/auth/logout` - Clear the auth cookie
+- `GET /api/auth/userdata` - Fetch the current logged-in user
 
 ### User management
 
-- `GET /api/getallusers` - fetch all users
-- `GET /api/getuser/:id` - get a user by ID
-- `PATCH /api/getuser/:id/edit` - update a user's info
-- `DELETE /api/getuser/:id/delete` - delete a user
+- `GET /api/getallusers` - Get all users
+- `GET /api/getuser/:id` - Get a specific user by ID
+- `PATCH /api/getuser/:id/edit` - Update a user's information
+- `DELETE /api/getuser/:id/delete` - Delete a user
 
 ## Database model
 
@@ -122,8 +127,8 @@ The `User` model includes:
 - `address`
 - `password`
 
-The model is synced automatically when the app starts using Sequelize.
+The model is synchronized automatically when the server starts.
 
 ## Notes
 
-This folder is responsible for the project’s server-side logic and data layer. The frontend depends on this API for all authentication and user operations, so this backend must be running before using the application end-to-end.
+This backend is required by both frontend applications. Start it before using either the user dashboard or the admin dashboard. It is the central service that connects the client apps to the MySQL database.

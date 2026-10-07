@@ -206,7 +206,7 @@ export default function SignupPage() {
 
                 <input
                   type="tel"
-                  placeholder="+91 98765 43210"
+                  placeholder="8954555523"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   onBlur={(e) => updateError("phone", e.target.value)}

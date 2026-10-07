@@ -14,7 +14,8 @@ export const dbDetails = {
 };
 
 export const frontendConfig = {
-  frontend_url: process.env.FRONTEND_URL || "http://localhost:3000",
+  frontend_url1: process.env.FRONTEND_URL1 || "http://localhost:3000",
+  frontend_url2: process.env.FRONTEND_URL2 || "http://localhost:3001",
 }; 
 
 export const authConfig = {

@@ -1,13 +1,6 @@
-"use client";
-import { useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  useEffect(() => {
-    localStorage.setItem("adminEmail", "admin@gmail.com");
-    localStorage.setItem("adminPassword", "Admin@123");
-  }, []);
-
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-950">
       {/* Header */}
@@ -49,8 +42,7 @@ export default function Home() {
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-gray-600 dark:text-gray-400">
-            A simple dashboard for users and administrators to manage profiles,
-            accounts, and registered users.
+            Create an account to manage your profile and account information.
           </p>
 
           {/* Buttons */}
@@ -89,44 +81,13 @@ export default function Home() {
             </p>
 
             <Link
-              href="/dashboard"
+              href="/user/dashboard"
               className="mt-6 inline-block text-sm font-semibold text-gray-900 hover:underline dark:text-white"
             >
               Open User Dashboard →
             </Link>
           </div>
 
-          {/* Admin Dashboard */}
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-xl dark:bg-gray-800">
-              🛡️
-            </div>
-
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-              Admin Dashboard
-            </h2>
-
-            <p className="mt-2 text-sm leading-6 text-gray-500 dark:text-gray-400">
-              Manage registered users, view user information, and perform
-              administrative operations.
-            </p>
-          </div>
-
-          {/* User Management */}
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-xl dark:bg-gray-800">
-              👥
-            </div>
-
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-              User Management
-            </h2>
-
-            <p className="mt-2 text-sm leading-6 text-gray-500 dark:text-gray-400">
-              View all registered users and manage their account information
-              from the administration panel.
-            </p>
-          </div>
         </section>
       </main>
 

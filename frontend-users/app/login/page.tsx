@@ -2,8 +2,8 @@
 
 import axios from "axios";
 import { useState } from "react";
+import { validateField } from "../../lib/validation";
 import { useRouter } from "next/navigation";
-import { validateField } from "@/lib/validation";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -37,18 +37,6 @@ export default function LoginPage() {
     }
 
     setLoading(true);
-
-    const adminEmail = localStorage.getItem("adminEmail");
-    const adminPassword = localStorage.getItem("adminPassword");
-
-    if (email.trim() === adminEmail && password === adminPassword) {
-      console.log("Admin login successful");
-
-      sessionStorage.setItem("role", "admin");
-
-      router.push("/admin/dashboard");
-      return;
-    }
 
     try {
       const loginData = await axios.post(

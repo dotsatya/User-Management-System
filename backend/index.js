@@ -18,9 +18,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
+const allowedOrigins = [
+  frontendConfig.frontend_url1,
+  frontendConfig.frontend_url2,
+];
+
 app.use(
   cors({
-    origin: frontendConfig.frontend_url,
+    origin: allowedOrigins,
     credentials: true, 
   }),
 );

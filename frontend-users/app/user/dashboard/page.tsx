@@ -45,7 +45,7 @@ export default function DashboardPage() {
           },
         );
 
-        console.log("User data:", userData.data);
+        // console.log("User data:", userData.data);
 
         setUser(userData.data.user);
       } catch (error) {
@@ -85,8 +85,11 @@ export default function DashboardPage() {
 
             {showProfile && (
               <div className="absolute right-0 top-12 z-10 w-48 rounded-xl  bg-white p-2 shadow-lg text-black   ">
-                <button className="w-full rounded-lg px-4 py-2 text-left text-sm hover:bg-gray-100">
-                  Profile
+                <button onClick={()=>{
+                  router.push("/user/editProfile")
+                }}
+                 className="w-full rounded-lg px-4 py-2 text-left text-sm hover:bg-gray-100">
+                  Edit Profile
                 </button>
 
                 <button className="w-full rounded-lg px-4 py-2 text-left text-sm hover:bg-gray-100">
